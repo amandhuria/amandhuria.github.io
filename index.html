@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aman Dhuria | Hydraulic Engineer</title>
+<style>
+  :root {
+    --bg: #0a0e17;
+    --bg-alt: #0f1524;
+    --primary: #00e5ff;
+    --secondary: #7c4dff;
+    --text: #e6f1ff;
+    --text-dim: #8ea3c0;
+    --card-bg: rgba(255,255,255,0.03);
+    --border: rgba(0,229,255,0.15);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* Animated background */
+  .bg-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(0,229,255,0.08), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(124,77,255,0.10), transparent 40%),
+      var(--bg);
+  }
+
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+  }
+  header h1 {
+    font-size: clamp(2.2em, 6vw, 4em);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards 0.2s;
+  }
+  header p.tagline {
+    font-size: 1.3em;
+    color: var(--text-dim);
+    margin-top: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards 0.5s;
+  }
+  header .contact-info {
+    margin-top: 25px;
+    font-size: 0.95em;
+    color: var(--text-dim);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards 0.8s;
+  }
+  header .contact-info a { color: var(--primary); text-decoration: none; }
+  header .contact-info a:hover { text-decoration: underline; }
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    width: 24px; height: 40px;
+    border: 2px solid var(--text-dim);
+    border-radius: 20px;
+    opacity: 0.6;
+  }
+  .scroll-cue::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    width: 4px; height: 8px;
+    background: var(--primary);
+    border-radius: 2px;
+    transform: translateX(-50%);
+    animation: scrollDot 1.6s infinite;
+  }
+  @keyframes scrollDot {
+    0% { top: 6px; opacity: 1; }
+    70% { top: 22px; opacity: 0; }
+    100% { top: 6px; opacity: 0; }
+  }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 14px 10px;
+    background: rgba(10,14,23,0.75);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 10px 18px;
+    font-size: 0.9em;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+  }
+  nav a:hover {
+    color: var(--bg);
+    background: var(--primary);
+    box-shadow: 0 0 16px rgba(0,229,255,0.6);
+  }
+
+  section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 90px 24px;
+  }
+  section h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+    color: var(--text);
+  }
+  section h2::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -10px;
+    height: 3px; width: 60px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .summary-box {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 30px;
+    border-radius: 16px;
+    font-size: 1.05em;
+    color: var(--text-dim);
+    backdrop-filter: blur(6px);
+  }
+
+  .job, .edu-item, .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+  .job:hover, .edu-item:hover, .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0,229,255,0.12);
+  }
+
+  .job {
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    border-left: 3px solid var(--primary);
+  }
+  .job h3 { color: var(--text); font-size: 1.25em; }
+  .job .meta { color: var(--primary); font-weight: 600; margin: 6px 0 16px; font-size: 0.9em; letter-spacing: 0.3px; }
+  .job ul { padding-left: 20px; color: var(--text-dim); }
+  .job ul li { margin-bottom: 8px; }
+
+  .edu-item { padding: 24px 32px; margin-bottom: 16px; }
+  .edu-item h3 { color: var(--text); }
+  .edu-item .meta { color: var(--primary); font-weight: 600; font-size: 0.9em; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .skill-tag {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: var(--text-dim);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+  }
+  .skill-tag:hover {
+    color: var(--bg);
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    transform: scale(1.04);
+    border-color: transparent;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 26px;
+  }
+  .project-card { overflow: hidden; display: flex; flex-direction: column; }
+  .project-card .img-wrap { overflow: hidden; height: 180px; }
+  .project-card img {
+    width: 100%; height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+    filter: saturate(0.9) brightness(0.85);
+  }
+  .project-card:hover img { transform: scale(1.08); }
+  .project-card .content { padding: 22px; flex: 1; }
+  .project-card h3 { color: var(--text); margin-bottom: 6px; }
+  .project-card .location {
+    color: var(--primary); font-size: 0.85em;
+    margin-bottom: 12px; font-weight: 600; letter-spacing: 0.3px;
+  }
+  .project-card ul { padding-left: 18px; font-size: 0.93em; color: var(--text-dim); }
+  .project-card ul li { margin-bottom: 6px; }
+
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-dim);
+    font-size: 0.9em;
+    border-top: 1px solid var(--border);
+  }
+  footer a { color: var(--primary); text-decoration: none; }
+
+  @media (max-width: 600px) {
+    nav a { padding: 8px 12px; font-size: 0.8em; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header>
+  <h1>Aman Dhuria</h1>
+  <p class="tagline">Hydraulic &amp; Fire Protection Engineer | Melbourne, VIC</p>
+  <p class="contact-info">
+    +61 449 670 002 &nbsp;|&nbsp;
+    <a href="mailto:dhuria.aman@gmail.com">dhuria.aman@gmail.com</a> &nbsp;|&nbsp;
+    <a href="#" target="_blank">LinkedIn</a>
+  </p>
+  <div class="scroll-cue"></div>
+</header>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+  <h2 class="reveal">About Me</h2>
+  <div class="summary-box reveal">
+    <p>Mechanical Engineer with more than 4 years of experience in building services across diverse sectors including residential, commercial, industrial, healthcare, and data centres. Proven ability to deliver efficient and compliant hydraulic and fire protection designs, collaborating closely with multidisciplinary teams to meet project objectives. Currently seeking a challenging role to apply and expand both technical and project management capabilities while contributing to sustainable and future-focused engineering solutions. Actively working towards Chartered status to further enhance professional development and leadership potential.</p>
+  </div>
+</section>
+
+<section id="experience">
+  <h2 class="reveal">Experience</h2>
+
+  <div class="job reveal">
+    <h3>Hydraulic Engineer | AECOM</h3>
+    <p class="meta">Melbourne | April 2026 - Present</p>
+    <ul>
+      <li>Delivering hydraulic services design with a strong integration focus with other disciplines, such as stormwater drainage, sewer alignments and infrastructure connection strategies.</li>
+      <li>Completing detailed hydraulic modelling and calculations within H2X, including pressure loss assessments, fixture unit analysis, pump sizing and pipework optimisation across multiple project stages.</li>
+      <li>Coordinating closely with civil engineers, structural engineers, architects and authorities to produce compliant and constructible service layouts, ensuring seamless alignment between internal and external services designs.</li>
+    </ul>
+  </div>
+
+  <div class="job reveal">
+    <h3>Hydraulic Engineer | Lincoln Pearce</h3>
+    <p class="meta">South Melbourne | February 2026 - April 2026</p>
+    <ul>
+      <li>Delivering hydraulic services design with a strong integration focus, incorporating external civil works such as stormwater drainage, pit layouts, sewer alignments and infrastructure connection strategies.</li>
+      <li>Coordinating closely with civil engineers, structural engineers, architects and authorities to produce compliant and constructible service layouts, ensuring seamless alignment between internal and external services designs.</li>
+    </ul>
+  </div>
+
+  <div class="job reveal">
+    <h3>Hydraulic &amp; Fire Protection Engineer | Evolved Engineering</h3>
+    <p class="meta">Melbourne CBD | January 2024 - February 2026</p>
+    <ul>
+      <li>Design documentation of hydraulic and fire protection systems.</li>
+      <li>Finalising design documentation using AutoCAD and Revit.</li>
+      <li>Conducting comprehensive hydraulic analyses, including pump system curves, fluid transients, and pumped and gravity-driven flows, ensuring compliance with industry standards.</li>
+      <li>Overseeing full lifecycle of a building project from design to completion, ensuring it meets time, budget and quality requirements.</li>
+      <li>Managing all project documentation, including reports, contracts and tenders.</li>
+      <li>Overseeing final handover of the building services.</li>
+      <li>Addressing defects or outstanding issues during the defects' liability period after practical completion.</li>
+    </ul>
+  </div>
+
+  <div class="job reveal">
+    <h3>Hydraulic Engineer | ADP Consulting</h3>
+    <p class="meta">Melbourne CBD | November 2021 - December 2023</p>
+    <ul>
+      <li>Design documentation for retail, residential, commercial, industrial and health sector on Bluebeam.</li>
+      <li>Created calculation template sheet for team utilisation based on AS3500.2025 and NCC 2022.</li>
+      <li>Coordinated designs with other services, civil engineer, architect, project manager and builders.</li>
+      <li>Liaised with gas and water authorities.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="education">
+  <h2 class="reveal">Education</h2>
+  <div class="edu-item reveal">
+    <h3>Bachelor of Engineering (Honours), Mechanical Engineering</h3>
+    <p class="meta">RMIT University | August 2020</p>
+  </div>
+  <div class="edu-item reveal">
+    <h3>Associate Degree in Engineering Technology</h3>
+    <p class="meta">RMIT University | July 2017</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2 class="reveal">Skills</h2>
+  <div class="skills-grid reveal">
+    <div class="skill-tag">Australian Standards AS3500, AS5601, AS2118.1</div>
+    <div class="skill-tag">National Construction Code</div>
+    <div class="skill-tag">Hydraulic Design</div>
+    <div class="skill-tag">Fire Protection Design</div>
+    <div class="skill-tag">Bluebeam</div>
+    <div class="skill-tag">H2X Design</div>
+    <div class="skill-tag">Scada</div>
+    <div class="skill-tag">Hyena</div>
+    <div class="skill-tag">Mechanical and Electrical Coordination</div>
+    <div class="skill-tag">Project Management</div>
+    <div class="skill-tag">Authority Liaison</div>
+    <div class="skill-tag">Council Liaison</div>
+    <div class="skill-tag">Project Budgeting</div>
+    <div class="skill-tag">Stakeholder Management</div>
+    <div class="skill-tag">Civil Integration</div>
+    <div class="skill-tag">Compliance Assessments</div>
+    <div class="skill-tag">Commissioning Support</div>
+    <div class="skill-tag">Template Development</div>
+    <div class="skill-tag">Workflow Improvement</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="reveal">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=Caulfield+Racecourse+Grandstand" alt="Caulfield Racecourse Grandstand"></div>
+      <div class="content">
+        <h3>Caulfield Racecourse Grandstand</h3>
+        <p class="location">Caulfield, VIC</p>
+        <ul>
+          <li>Advised infrastructure re-routing and upgrading.</li>
+          <li>Coordinated with another project team for project stage planning on site to suit hydraulic design for the grandstand.</li>
+          <li>Liaison with architects, structural, and civil engineers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=Jam+Factory+Redevelopment" alt="Jam Factory Redevelopment"></div>
+      <div class="content">
+        <h3>Jam Factory Redevelopment</h3>
+        <p class="location">South Yarra, VIC</p>
+        <ul>
+          <li>Preliminary and design development stage hydraulic design for commercial, workplace, retail, and residential parts of the project.</li>
+          <li>Hydraulic calculations for water, gas, stormwater, and non-potable water.</li>
+          <li>Selection of cold water, hot water, trade waste, re-used water equipment.</li>
+          <li>Liaison with authorities for upgrades to development connections.</li>
+          <li>Liaison with ESD on stormwater strategies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=St.+Moritz" alt="St. Moritz"></div>
+      <div class="content">
+        <h3>St. Moritz</h3>
+        <p class="location">St. Kilda, VIC</p>
+        <ul>
+          <li>Completed testing and provided performance solution for wet areas.</li>
+          <li>Responding to RFIs during construction.</li>
+          <li>Liaison with builder, building surveyor, and hydraulic engineer to generate performance design brief.</li>
+          <li>Reviewed construction documentation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=Barwon+Health+Central" alt="Barwon Health Central"></div>
+      <div class="content">
+        <h3>Barwon Health Central</h3>
+        <p class="location">Geelong, VIC</p>
+        <ul>
+          <li>Preliminary hydraulic design for fit-out works at new mental health hub in Geelong.</li>
+          <li>Written design reports.</li>
+          <li>Reviewed shop drawings.</li>
+          <li>Liaison with authorities to seek approval for connections.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=KMART+Head+Office+Fit-out" alt="KMART Head Office Fit-out"></div>
+      <div class="content">
+        <h3>KMART Head Office Fit-out</h3>
+        <p class="location">Chadstone, VIC</p>
+        <ul>
+          <li>Concept to construction engagement (on-going) for hydraulic services.</li>
+          <li>Hydraulic calculations for water, gas, stormwater, and non-potable water.</li>
+          <li>Selection of cold water, hot water, trade waste, re-used water equipment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="img-wrap"><img src="https://via.placeholder.com/400x180?text=Seaford+Compass+Business+Park" alt="Seaford Compass Business Park"></div>
+      <div class="content">
+        <h3>Seaford Compass Business Park</h3>
+        <p class="location">Seaford, VIC</p>
+        <ul>
+          <li>Concept to construction engagement for hydraulic and fire protection design of 6.65 hectare compass park with multiple lots.</li>
+          <li>Liaison with fire engineer.</li>
+          <li>Liaison with authorities and civil engineers for infrastructure upgrades to suit new development.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="reveal">Contact</h2>
+  <div class="summary-box reveal">
+    <p>Feel free to reach out via email at <a href="mailto:dhuria.aman@gmail.com" style="color: var(--primary);">dhuria.aman@gmail.com</a> or by phone at +61 449 670 002.</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Aman Dhuria. Built with care.</p>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
