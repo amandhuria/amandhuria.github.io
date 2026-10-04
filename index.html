@@ -1,538 +1,149 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aman Dhuria | Premium Hydraulic Engineer Portfolio</title>
-
-<!-- Google Fonts: Inter -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        fontFamily: {
-          sans: ['Inter', 'sans-serif'],
-        },
-        colors: {
-          dark: {
-            900: '#030305',
-            800: '#08080c',
-            700: '#0f0f16',
-          },
-          accent: {
-            cyan: '#00f0ff',
-            purple: '#8a2be2',
-            gold: '#ceb16d',
-          }
-        },
-        animation: {
-          'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-          'blob': 'blob 15s infinite alternate',
-          'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          'flow': 'flow 10s linear infinite',
-        },
-        keyframes: {
-          fadeInUp: {
-            '0%': { opacity: '0', transform: 'translateY(30px)' },
-            '100%': { opacity: '1', transform: 'translateY(0)' },
-          },
-          blob: {
-            '0%': { transform: 'translate(0, 0) scale(1)' },
-            '50%': { transform: 'translate(30px, -30px) scale(1.1)' },
-            '100%': { transform: 'translate(-30px, 30px) scale(0.9)' },
-          },
-          flow: {
-            '0%': { strokeDashoffset: '1000' },
-            '100%': { strokeDashoffset: '0' },
-          }
-        }
-      }
-    }
-  }
-</script>
-
-<style>
-  body {
-    background-color: #030305;
-    color: #e2e8f0;
-    overflow-x: hidden;
-  }
-  
-  /* Custom scrollbar for premium feel */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { background: #030305; }
-  ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #334155; }
-
-  /* Glassmorphism utilities */
-  .glass {
-    background: rgba(255, 255, 255, 0.02);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-  }
-  .glass-nav {
-    background: rgba(3, 3, 5, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  /* Reveal logic */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reveal.active { opacity: 1; transform: translateY(0); }
-  
-  /* Engineering blueprint grid pattern */
-  .bg-grid {
-    background-size: 50px 50px;
-    background-image: 
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    mask-image: radial-gradient(circle at center, black, transparent 80%);
-    -webkit-mask-image: radial-gradient(circle at center, black, transparent 80%);
-  }
-</style>
-</head>
-<body class="antialiased selection:bg-accent-cyan selection:text-dark-900 relative">
-
-<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-dark-900">
-  
-  <!-- Architectural Grid -->
-  <div class="absolute inset-0 bg-grid"></div>
-
-  <!-- Abstract Hydraulic Flow Lines (Pipes) -->
-  <svg class="absolute inset-0 w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="cyan-flow" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
-        <stop offset="50%" stop-color="#00f0ff" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
-      </linearGradient>
-      <linearGradient id="purple-flow" x1="100%" y1="0%" x2="0%" y2="100%">
-        <stop offset="0%" stop-color="#8a2be2" stop-opacity="0" />
-        <stop offset="50%" stop-color="#8a2be2" stop-opacity="0.8" />
-        <stop offset="100%" stop-color="#8a2be2" stop-opacity="0" />
-      </linearGradient>
-    </defs>
-    
-    <!-- Pipe Path 1 -->
-    <path d="M -100,200 L 250,200 Q 300,200 300,250 L 300,800 Q 300,850 350,850 L 1200,850" 
-          fill="none" stroke="url(#cyan-flow)" stroke-width="2" 
-          stroke-dasharray="10 15" class="animate-flow" />
-          
-    <!-- Pipe Path 2 -->
-    <path d="M 1200,100 L 850,100 Q 800,100 800,150 L 800,500 Q 800,550 750,550 L -100,550" 
-          fill="none" stroke="url(#purple-flow)" stroke-width="2" 
-          stroke-dasharray="10 15" class="animate-flow" style="animation-duration: 15s;" />
-          
-    <!-- Engineering Nodes -->
-    <circle cx="300" cy="250" r="4" fill="#00f0ff" class="animate-pulse" />
-    <circle cx="800" cy="500" r="4" fill="#8a2be2" class="animate-pulse" />
-  </svg>
-
-  <!-- Glowing Blobs -->
-  <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-accent-cyan/10 blur-[120px] mix-blend-screen animate-blob"></div>
-  <div class="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-accent-purple/10 blur-[150px] mix-blend-screen animate-blob" style="animation-delay: 3s;"></div>
-</div>
-
-<header class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative">
-  <div class="opacity-0 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full glass text-xs font-semibold text-accent-cyan uppercase tracking-[0.2em] border-accent-cyan/20">
-      <span class="w-2 h-2 rounded-full bg-accent-cyan animate-pulse"></span>
-      Open for collaboration
-    </div>
+<!-- ... existing code ... -->
+<section id="about">
+  <h2 class="reveal">About Me</h2>
+  <div class="summary-box reveal">
+    <p>Mechanical Engineer with 5 years of experience in building services across diverse sectors including aviation, residential, commercial, industrial, healthcare, and data centres. Proven ability to deliver efficient and compliant hydraulic and fire protection designs, collaborating closely with multidisciplinary teams to meet project objectives. Currently seeking a challenging role to apply and expand both technical and project management capabilities while contributing to sustainable and future-focused engineering solutions. Actively working towards Chartered status to further enhance professional development and leadership potential.</p>
   </div>
-  
-  <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 opacity-0 animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
-    Aman <span class="text-transparent bg-clip-text bg-gradient-to-br from-accent-cyan via-blue-500 to-accent-purple">Dhuria</span>
-  </h1>
-  
-  <p class="text-lg md:text-2xl text-slate-400 font-light max-w-2xl mb-10 opacity-0 animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
-    Hydraulic &amp; Fire Protection Engineer based in Melbourne, VIC. Delivering efficient, compliant, and sustainable building services.
-  </p>
-  
-  <div class="flex flex-wrap justify-center gap-4 opacity-0 animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
-    <a href="mailto:dhuria.aman@gmail.com" class="flex items-center gap-2 px-6 py-3 rounded-full glass hover:bg-white/10 hover:border-accent-cyan/50 transition-all duration-300">
-      <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-      dhuria.aman@gmail.com
-    </a>
-    <a href="tel:+61449670002" class="flex items-center gap-2 px-6 py-3 rounded-full glass hover:bg-white/10 hover:border-accent-purple/50 transition-all duration-300">
-      <svg class="w-5 h-5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-      +61 449 670 002
-    </a>
-    <a href="#" target="_blank" class="flex items-center gap-2 px-6 py-3 rounded-full glass hover:bg-white/10 hover:border-accent-cyan/50 transition-all duration-300">
-      <svg class="w-5 h-5 text-slate-300" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-      LinkedIn
-    </a>
+</section>
+
+<section id="experience">
+<!-- ... existing code ... -->
+  <div class="job reveal">
+    <h3>Hydraulic Engineer | Lincoln Pearce</h3>
+    <p class="meta">South Melbourne | February 2026 - April 2026</p>
+    <ul>
+      <li>Delivering hydraulic services design with a strong integration focus, incorporating external civil works such as stormwater drainage, pit layouts, sewer alignments and infrastructure connection strategies.</li>
+      <li>Coordinating closely with civil engineers, structural engineers, architects and authorities to produce compliant and constructible service layouts, ensuring seamless alignment between internal and external services designs.</li>
+    </ul>
   </div>
 
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 opacity-0 animate-[fadeInUp_1s_ease-out_1.2s_forwards]">
-    <span class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Scroll</span>
-    <div class="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center p-1">
-      <div class="w-1.5 h-2 bg-accent-cyan rounded-full animate-bounce"></div>
-    </div>
+  <div class="job reveal">
+    <h3>Hydraulic &amp; Fire Protection Engineer | Evolved Engineering</h3>
+    <p class="meta">Melbourne CBD | January 2024 - February 2026</p>
+    <ul>
+      <li>Design documentation of hydraulic and fire protection systems.</li>
+      <li>Finalised design documentation using AutoCAD and Revit.</li>
+      <li>Conducted comprehensive hydraulic analyses, including pump system curves, fluid transients, and pumped and gravity-driven flows, ensuring compliance with industry standards.</li>
+      <li>Oversee the full lifecycle of a building project from design to completion, ensuring it meets time, budget and quality requirements.</li>
+      <li>Managed all project documentation, including reports, contracts, and tenders.</li>
+      <li>Oversee the final handover of the building services.</li>
+      <li>Addressed defects or outstanding issues during the defects' liability period after practical completion.</li>
+    </ul>
   </div>
-</header>
 
-<nav class="sticky top-0 z-50 glass-nav py-4 px-6 flex justify-center">
-  <div class="flex gap-1 md:gap-4 flex-wrap justify-center bg-white/5 p-1.5 rounded-full border border-white/10 shadow-lg">
-    <a href="#about" class="px-4 py-2 text-sm font-medium text-slate-300 rounded-full hover:text-white hover:bg-white/10 transition-all">About</a>
-    <a href="#experience" class="px-4 py-2 text-sm font-medium text-slate-300 rounded-full hover:text-white hover:bg-white/10 transition-all">Experience</a>
-    <a href="#education" class="px-4 py-2 text-sm font-medium text-slate-300 rounded-full hover:text-white hover:bg-white/10 transition-all">Education</a>
-    <a href="#skills" class="px-4 py-2 text-sm font-medium text-slate-300 rounded-full hover:text-white hover:bg-white/10 transition-all">Skills</a>
-    <a href="#projects" class="px-4 py-2 text-sm font-medium text-slate-300 rounded-full hover:text-white hover:bg-white/10 transition-all">Projects</a>
+  <div class="job reveal">
+    <h3>Hydraulic Engineer | ADP Consulting</h3>
+    <p class="meta">Melbourne CBD | November 2021 - December 2023</p>
+    <ul>
+      <li>Design documentation for retail, residential, commercial, industrial and health sector on blue beam.</li>
+      <li>Created calculation template sheet for team utilisation based on AS3500.2025 and NCC 2022.</li>
+      <li>Coordinated designs with other services, civil engineer, architect, project manager and builders.</li>
+      <li>Liaised with gas and water authorities.</li>
+    </ul>
   </div>
-</nav>
+</section>
 
-<main class="max-w-6xl mx-auto px-6 py-24 space-y-32">
+<section id="education">
+<!-- ... existing code ... -->
+<section id="projects">
+  <h2 class="reveal">Projects</h2>
+  <div class="projects-grid">
 
-  <section id="about" class="scroll-mt-32">
-    <div class="flex items-center gap-4 mb-10 reveal">
-      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">About Me</h2>
-      <div class="h-px bg-gradient-to-r from-accent-cyan to-transparent flex-1 opacity-50"></div>
-    </div>
-    <div class="glass p-8 md:p-12 rounded-3xl reveal relative overflow-hidden">
-      <!-- Subtle inner glow -->
-      <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent-cyan to-transparent opacity-30"></div>
-      
-      <p class="text-lg leading-relaxed text-slate-300 font-light">
-        Mechanical Engineer with more than 4 years of experience in building services across diverse sectors including residential, commercial, industrial, healthcare, and data centres. Proven ability to deliver efficient and compliant hydraulic and fire protection designs, collaborating closely with multidisciplinary teams to meet project objectives. 
-        <br><br>
-        Currently seeking a challenging role to apply and expand both technical and project management capabilities while contributing to sustainable and future-focused engineering solutions. Actively working towards Chartered status to further enhance professional development and leadership potential.
-      </p>
-    </div>
-  </section>
-
-  <section id="experience" class="scroll-mt-32">
-    <div class="flex items-center gap-4 mb-12 reveal">
-      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Experience</h2>
-      <div class="h-px bg-gradient-to-r from-accent-purple to-transparent flex-1 opacity-50"></div>
-    </div>
-
-    <div class="space-y-6">
-      
-      <!-- Job 1 -->
-      <div class="glass p-8 rounded-3xl border-l-4 border-l-accent-cyan hover:-translate-y-1 hover:shadow-2xl hover:shadow-accent-cyan/10 transition-all duration-300 reveal">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-          <div>
-            <h3 class="text-xl md:text-2xl font-bold text-white">Hydraulic Engineer</h3>
-            <p class="text-lg text-slate-300">AECOM</p>
-          </div>
-          <div class="flex items-center gap-2 text-accent-cyan font-medium bg-accent-cyan/10 px-4 py-1.5 rounded-full text-sm border border-accent-cyan/20">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            April 2026 &mdash; Present <span class="text-slate-400 font-normal">| Melbourne</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-slate-400 list-disc list-outside ml-5 font-light">
-          <li>Delivering hydraulic services design with a strong integration focus with other disciplines, such as stormwater drainage, sewer alignments and infrastructure connection strategies.</li>
-          <li>Completing detailed hydraulic modelling and calculations within H2X, including pressure loss assessments, fixture unit analysis, pump sizing and pipework optimisation.</li>
-          <li>Coordinating closely with civil engineers, structural engineers, architects and authorities to produce compliant and constructible service layouts.</li>
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Gabba Arena - 2032 Olympic Games venue</h3>
+        <p class="location">Brisbane, QLD</p>
+        <ul>
+          <li>Hydraulic design including potable water, sanitary drainage, stormwater drainage and rainwater re-use services from concept to detailed proposal phase for upcoming Gabba Arena in Brisbane for 2032 Olympic Games.</li>
+          <li>Design coordination with consortium leading to RFDP phase.</li>
+          <li>Internal design coordination with structural, civil, ESD, mechanical elements of the arena.</li>
         </ul>
       </div>
-
-      <!-- Job 2 -->
-      <div class="glass p-8 rounded-3xl hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/5 transition-all duration-300 reveal">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-          <div>
-            <h3 class="text-xl md:text-2xl font-bold text-white">Hydraulic Engineer</h3>
-            <p class="text-lg text-slate-300">Lincoln Pearce</p>
-          </div>
-          <div class="flex items-center gap-2 text-slate-300 font-medium bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Feb 2026 &mdash; Apr 2026 <span class="text-slate-500 font-normal">| S. Melbourne</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-slate-400 list-disc list-outside ml-5 font-light">
-          <li>Delivering hydraulic services design with a strong integration focus, incorporating external civil works such as stormwater drainage, pit layouts, and sewer alignments.</li>
-          <li>Coordinating closely with civil engineers, structural engineers, architects and authorities to produce compliant service layouts.</li>
-        </ul>
-      </div>
-
-      <!-- Job 3 -->
-      <div class="glass p-8 rounded-3xl hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/5 transition-all duration-300 reveal">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-          <div>
-            <h3 class="text-xl md:text-2xl font-bold text-white">Hydraulic &amp; Fire Protection Engineer</h3>
-            <p class="text-lg text-slate-300">Evolved Engineering</p>
-          </div>
-          <div class="flex items-center gap-2 text-slate-300 font-medium bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Jan 2024 &mdash; Feb 2026 <span class="text-slate-500 font-normal">| Melbourne CBD</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-slate-400 list-disc list-outside ml-5 font-light">
-          <li>Design documentation of hydraulic and fire protection systems using AutoCAD and Revit.</li>
-          <li>Conducting comprehensive hydraulic analyses, including pump system curves and fluid transients.</li>
-          <li>Overseeing full lifecycle of a building project from design to completion.</li>
-          <li>Managing project documentation, reports, contracts, tenders, and final handover.</li>
-        </ul>
-      </div>
-
-      <!-- Job 4 -->
-      <div class="glass p-8 rounded-3xl hover:-translate-y-1 hover:shadow-2xl hover:shadow-white/5 transition-all duration-300 reveal">
-        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4 gap-2">
-          <div>
-            <h3 class="text-xl md:text-2xl font-bold text-white">Hydraulic Engineer</h3>
-            <p class="text-lg text-slate-300">ADP Consulting</p>
-          </div>
-          <div class="flex items-center gap-2 text-slate-300 font-medium bg-white/5 border border-white/10 px-4 py-1.5 rounded-full text-sm">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            Nov 2021 &mdash; Dec 2023 <span class="text-slate-500 font-normal">| Melbourne CBD</span>
-          </div>
-        </div>
-        <ul class="space-y-3 text-slate-400 list-disc list-outside ml-5 font-light">
-          <li>Design documentation for retail, residential, commercial, industrial and health sector on Bluebeam.</li>
-          <li>Created calculation template sheet for team utilisation based on AS3500.2025 and NCC 2022.</li>
-          <li>Liaised with gas and water authorities and coordinated designs with architects and builders.</li>
-        </ul>
-      </div>
-
     </div>
-  </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-    <section id="education" class="scroll-mt-32">
-      <div class="flex items-center gap-4 mb-10 reveal">
-        <h2 class="text-3xl font-black uppercase tracking-tight">Education</h2>
-        <div class="h-px bg-gradient-to-r from-accent-cyan to-transparent flex-1 opacity-50"></div>
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Gold Coast Arena - 2032 Olympic Games venue</h3>
+        <p class="location">Gold Coast, QLD</p>
+        <ul>
+          <li>Hydraulic design including potable water, sanitary drainage, stormwater drainage and rainwater re-use services from concept to detailed proposal phase for upcoming Gold Coast Arena in Gold Coast for 2032 Olympic Games.</li>
+        </ul>
       </div>
-      <div class="space-y-6">
-        <div class="glass p-6 rounded-2xl hover:border-accent-cyan/30 transition-colors reveal relative overflow-hidden">
-          <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-cyan opacity-50"></div>
-          <h3 class="text-lg font-bold text-white mb-1">Bachelor of Engineering (Honours)</h3>
-          <p class="text-slate-300 mb-3 font-light">Mechanical Engineering</p>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-400">RMIT University</span>
-            <span class="text-accent-cyan bg-accent-cyan/10 px-3 py-1 rounded-full font-medium">August 2020</span>
-          </div>
-        </div>
-        <div class="glass p-6 rounded-2xl hover:border-accent-purple/30 transition-colors reveal relative overflow-hidden">
-          <div class="absolute left-0 top-0 bottom-0 w-1 bg-accent-purple opacity-50"></div>
-          <h3 class="text-lg font-bold text-white mb-1">Associate Degree in Eng. Tech</h3>
-          <p class="text-slate-300 mb-3 font-light">Engineering Technology</p>
-          <div class="flex items-center justify-between text-sm">
-            <span class="text-slate-400">RMIT University</span>
-            <span class="text-accent-purple bg-accent-purple/10 px-3 py-1 rounded-full font-medium">July 2017</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
 
-    <section id="skills" class="scroll-mt-32">
-      <div class="flex items-center gap-4 mb-10 reveal">
-        <h2 class="text-3xl font-black uppercase tracking-tight">Skills</h2>
-        <div class="h-px bg-gradient-to-r from-accent-purple to-transparent flex-1 opacity-50"></div>
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Melbourne Airport International Terminal Expansion</h3>
+        <p class="location">Melbourne, VIC</p>
+        <ul>
+          <li>Hydraulic design calculation verification and assisting design team for concept design phase.</li>
+        </ul>
       </div>
-      <div class="flex flex-wrap gap-3 reveal">
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">AS3500, AS5601, AS2118.1</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">National Construction Code</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-accent-cyan/20 hover:border-accent-cyan/50 transition-all cursor-default text-accent-cyan">Hydraulic Design</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-accent-purple/20 hover:border-accent-purple/50 transition-all cursor-default text-accent-purple">Fire Protection Design</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Bluebeam</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">H2X Design</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Scada &amp; Hyena</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">MEP Coordination</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Project Management</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Authority Liaison</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Project Budgeting</span>
-        <span class="px-4 py-2 rounded-xl glass text-sm text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all cursor-default">Civil Integration</span>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Caulfield Racecourse Grandstand</h3>
+        <p class="location">Caulfield, VIC</p>
+        <ul>
+          <li>Advised infrastructure re-routing and upgrading.</li>
+          <li>Coordinated with another project team for project stage planning on site to suit hydraulic design for the grandstand.</li>
+          <li>Liaison with Architects, structural, and civil engineers.</li>
+        </ul>
       </div>
-    </section>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>St. Moritz</h3>
+        <p class="location">St. Kilda, VIC</p>
+        <ul>
+          <li>Completed testing and provided performance solutions to eliminate floor waste within selected wet areas.</li>
+          <li>Responding to RFI's during construction.</li>
+          <li>Liaison with builder, building surveyor, and hydraulic engineer to generate performance design brief.</li>
+          <li>Reviewed construction documentation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Barwon Health Central</h3>
+        <p class="location">Geelong, VIC</p>
+        <ul>
+          <li>Preliminary hydraulic design for fit-out works at new mental health hub in Geelong.</li>
+          <li>Written design reports.</li>
+          <li>Reviewed Shop drawings.</li>
+          <li>Liaison with authorities to seek approval for connections.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>KMART Head Office Fit-out</h3>
+        <p class="location">Chadstone, VIC</p>
+        <ul>
+          <li>Concept to construction engagement (on-going) for hydraulic services.</li>
+          <li>Hydraulic calculations for water, gas, stormwater, and non-potable water.</li>
+          <li>Selection of cold water, hot water, trade waste, re-used water equipment.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="content">
+        <h3>Seaford Compass Business Park</h3>
+        <p class="location">Seaford, VIC</p>
+        <ul>
+          <li>Concept to construction engagement for hydraulic and fire protection design of 6.65ha compass park with multiple lots.</li>
+          <li>Liaison with authorities and civil engineers for infrastructure upgrades to suit new development.</li>
+        </ul>
+      </div>
+    </div>
+
   </div>
+</section>
 
-  <section id="projects" class="scroll-mt-32">
-    <div class="flex items-center gap-4 mb-12 reveal">
-      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Featured Projects</h2>
-      <div class="h-px bg-gradient-to-r from-accent-cyan via-accent-purple to-transparent flex-1 opacity-50"></div>
-    </div>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Typography Project Card 1 -->
-      <a href="https://www.woodsbagot.com/projects/grand-pavilion-melbourne-racing-club/" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,240,255,0.15)] hover:border-accent-cyan/50 reveal cursor-pointer">
-        <!-- Text-Based Banner -->
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            Caulfield<br>Grandstand
-          </h3>
-          <!-- Hover Overlay -->
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan/20 rounded-full text-white text-sm font-semibold border border-accent-cyan/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-cyan mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Caulfield, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Advised infrastructure re-routing and upgrading.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Coordinated project stage planning on site to suit hydraulic design.</li>
-          </ul>
-        </div>
-      </a>
-
-      <!-- Typography Project Card 2 -->
-      <a href="https://www.gurner.com.au/projects/jam-factory" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(138,43,226,0.15)] hover:border-accent-purple/50 reveal cursor-pointer">
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            Jam Factory<br>Redevelopment
-          </h3>
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-purple/20 rounded-full text-white text-sm font-semibold border border-accent-purple/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-purple mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> South Yarra, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Preliminary and design development stage hydraulic design.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Liaison with authorities for upgrades and ESD on stormwater.</li>
-          </ul>
-        </div>
-      </a>
-
-      <!-- Typography Project Card 3 -->
-      <a href="https://www.crema.com.au/projects/st-moritz/" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,240,255,0.15)] hover:border-accent-cyan/50 reveal cursor-pointer">
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            St. Moritz
-          </h3>
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan/20 rounded-full text-white text-sm font-semibold border border-accent-cyan/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-cyan mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> St. Kilda, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Completed testing and provided performance solution for wet areas.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Generated performance design brief with builders &amp; surveyors.</li>
-          </ul>
-        </div>
-      </a>
-
-      <!-- Typography Project Card 4 -->
-      <a href="https://www.barwonhealth.org.au/" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(138,43,226,0.15)] hover:border-accent-purple/50 reveal cursor-pointer">
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            Barwon Health<br>Central
-          </h3>
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-purple/20 rounded-full text-white text-sm font-semibold border border-accent-purple/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-purple mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Geelong, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Preliminary hydraulic design for fit-out works at new hub.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Liaison with authorities to seek approval for connections.</li>
-          </ul>
-        </div>
-      </a>
-
-      <!-- Typography Project Card 5 -->
-      <a href="https://www.kmart.com.au/" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(0,240,255,0.15)] hover:border-accent-cyan/50 reveal cursor-pointer">
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            KMART<br>Head Office
-          </h3>
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-cyan/20 rounded-full text-white text-sm font-semibold border border-accent-cyan/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-cyan mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Chadstone, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Concept to construction engagement for hydraulic services.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-cyan mt-0.5">&rsaquo;</span> Selection of cold/hot water, trade waste, &amp; re-used water equipment.</li>
-          </ul>
-        </div>
-      </a>
-
-      <!-- Typography Project Card 6 -->
-      <a href="https://www.brixproperty.com.au/seaford" target="_blank" class="group block relative glass rounded-3xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_40px_rgba(138,43,226,0.15)] hover:border-accent-purple/50 reveal cursor-pointer">
-        <div class="relative h-48 overflow-hidden bg-dark-800 flex items-center justify-center p-6 border-b border-white/5">
-          <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent-purple/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-          <h3 class="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 text-center uppercase tracking-widest relative z-10 transform group-hover:scale-105 transition-transform duration-700 leading-tight">
-            Seaford Compass<br>Park
-          </h3>
-          <div class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
-             <span class="flex items-center gap-2 px-5 py-2.5 bg-accent-purple/20 rounded-full text-white text-sm font-semibold border border-accent-purple/50 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                Visit Website <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-             </span>
-          </div>
-        </div>
-        <div class="p-6 bg-dark-900/50">
-          <p class="text-xs font-bold text-accent-purple mb-4 flex items-center gap-1 uppercase tracking-wider"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg> Seaford, VIC</p>
-          <ul class="text-sm text-slate-400 space-y-2 list-none font-light">
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Hydraulic and fire protection design of 6.65ha compass park.</li>
-            <li class="flex items-start gap-2"><span class="text-accent-purple mt-0.5">&rsaquo;</span> Liaison with fire engineer, authorities, and civil engineers.</li>
-          </ul>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <section id="contact" class="scroll-mt-32 pb-24 border-b border-white/5">
-    <div class="flex items-center gap-4 mb-10 reveal">
-      <h2 class="text-3xl md:text-4xl font-black uppercase tracking-tight">Let's Connect</h2>
-      <div class="h-px bg-gradient-to-r from-accent-cyan to-transparent flex-1 opacity-50"></div>
-    </div>
-    <div class="glass p-10 md:p-14 rounded-3xl text-center reveal relative overflow-hidden">
-      <!-- Decorative background element for contact box -->
-      <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent-cyan/10 rounded-full blur-[60px] pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-64 h-64 bg-accent-purple/10 rounded-full blur-[60px] pointer-events-none"></div>
-      
-      <p class="text-xl text-slate-300 mb-8 max-w-2xl mx-auto font-light relative z-10">
-        I am currently open for collaboration. Whether you have a project inquiry or just want to connect, feel free to reach out.
-      </p>
-      <a href="mailto:dhuria.aman@gmail.com" class="inline-flex relative z-10 items-center gap-3 px-8 py-4 bg-white text-dark-900 font-bold uppercase tracking-wider rounded-full hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-        Say Hello
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<footer class="text-center py-10 text-slate-600 text-sm font-medium tracking-wide">
-  <p>&copy; 2026 Aman Dhuria. Engineered with precision.</p>
-</footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { 
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  });
-</script>
-
-</body>
-</html>
+<section id="contact">
+<!-- ... existing code ... -->
